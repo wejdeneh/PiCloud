@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Set;
 
 @Data
 @Entity
@@ -13,5 +14,7 @@ public class Class  implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idC;
     private int num;
+    @ManyToOne(cascade = CascadeType.ALL)
+    Bloc bloc;
 
 }
