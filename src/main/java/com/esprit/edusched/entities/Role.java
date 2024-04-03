@@ -1,6 +1,6 @@
 package com.esprit.edusched.entities;
 
-import com.abir.pi.enums.TypeRole;
+import com.esprit.edusched.enums.TypeRole;
 import jakarta.persistence.*;
 import lombok.*;
 
