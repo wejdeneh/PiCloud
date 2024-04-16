@@ -18,4 +18,7 @@ public class ReservationC implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date finald;
     private String state;
+    @ManyToOne(cascade =CascadeType.ALL )
+    Class cl;
+
 }
