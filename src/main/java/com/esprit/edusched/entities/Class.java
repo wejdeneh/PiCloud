@@ -12,9 +12,13 @@ import java.util.Set;
 public class Class  implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "idC")
     private Long idC;
     private int num;
-    @ManyToOne(cascade = CascadeType.ALL)
-    Bloc bloc;
+    @OneToMany( mappedBy="clas", cascade = CascadeType.ALL)
+    private Set<ReservationC> reservationCS;
+    @ManyToOne
+    @JoinColumn(name = "idB")
+    private Bloc bloc;
 
 }
