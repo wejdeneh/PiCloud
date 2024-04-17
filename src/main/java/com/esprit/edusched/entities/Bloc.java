@@ -1,6 +1,7 @@
 package com.esprit.edusched.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,6 +23,8 @@ public class Bloc implements Serializable {
     @Column(name = "idB")
     private Long idB;
     private String name;
+    @JsonIgnore
+
     @OneToMany(mappedBy="bloc", cascade = CascadeType.ALL)
     private Set<Class> classes;
 
