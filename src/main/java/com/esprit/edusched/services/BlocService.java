@@ -15,29 +15,47 @@ public class BlocService implements IBlocService{
 
     private BlocRepository blocRepository;
 
+    @Override
+    public List<Bloc> getAllBlocs() {
+        return blocRepository.findAll();
+    }
+
+    @Override
+    public Bloc getBlocById(long id) {
+        return blocRepository.findById(id).orElse(null);    }
+
+    @Override
     public Bloc addBloc(Bloc bloc) {
         return blocRepository.save(bloc);
     }
 
     @Override
-    public void updateBloc(int id, Bloc bloc) {
+    public String deleteBloc(long id) {
+        if (blocRepository.existsById(id)) {
+            blocRepository.deleteById(id);
+            return "Bloc deleted";
+        }
+        return "Bloc not found";
 
     }
 
     @Override
-    public void deleteBloc(int id) {
+    public Bloc updateBloc(Long id, Bloc updatedBloc) {
+        Bloc bloc = blocRepository.findById(id).orElse(null);
+        if (bloc != null) {
+            bloc.setName(updatedBloc.getName());
+            bloc.setClasses(updatedBloc.getClasses());
+            return blocRepository.save(bloc);
+        }
+        return null;    }
 
-    }
-
-    public List<Bloc> getAllBlocs() {
-        return blocRepository.findAll();
-    }
-
-  // @Override
+/*
+    @Override
     public Bloc getBlocById(Long id) {
         return blocRepository.findById(id).orElse(null);
-    }
+    }*/
 
+   /* @Override
     public Bloc updateBloc(Long id, Bloc updatedBloc) {
         Bloc bloc = blocRepository.findById(id).orElse(null);
         if (bloc != null) {
@@ -46,13 +64,14 @@ public class BlocService implements IBlocService{
             return blocRepository.save(bloc);
         }
         return null;
-    }
+    }*/
 
+    /*@Override
     public String deleteBloc(Long id) {
         if (blocRepository.existsById(id)) {
             blocRepository.deleteById(id);
             return "Bloc deleted";
         }
         return "Bloc not found";
-    }
+    }*/
 }

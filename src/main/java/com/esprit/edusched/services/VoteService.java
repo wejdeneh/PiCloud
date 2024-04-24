@@ -13,5 +13,5 @@ public interface VoteService {
     List<Vote> findAll();
     void deleteVote(Vote vote);
     Vote fingById(Long id );
-    public Vote createVote(Vote v, long idTeam, long idCompetition, long idUser) ;
+    //public Vote createVote(Vote v, long idTeam, long idCompetition, long idUser) ;
 }

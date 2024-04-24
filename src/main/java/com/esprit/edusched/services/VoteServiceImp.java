@@ -1,13 +1,9 @@
 package com.esprit.edusched.services;
 
-import com.esprit.edusched.entities.Competition;
-import com.esprit.edusched.entities.Team;
 import com.esprit.edusched.entities.Vote;
 import com.esprit.edusched.repositories.CompetitionRepository;
 import com.esprit.edusched.repositories.TeamRepository;
-import com.esprit.edusched.repositories.UserRepository;
 import com.esprit.edusched.repositories.VoteRepository;
-import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +14,8 @@ import java.util.Optional;
 public class VoteServiceImp implements VoteService {
     @Autowired
     private VoteRepository voteRepository ;
-    @Autowired
-    private UserRepository userRepository ;
+    /*@Autowired
+    private UserRepository userRepository ;*/
     @Autowired
     private CompetitionRepository competitionRepository ;
     @Autowired
@@ -59,7 +55,7 @@ public class VoteServiceImp implements VoteService {
         return null;
     }
 
-    @Override
+    /*@Override
     public Vote createVote(Vote v, long idTeam, long idCompetition, long idUser) {
         Team team = teamRepository.findById(idTeam).orElseThrow(() -> new EntityNotFoundException("Team not found"));
         Competition competition = competitionRepository.findById(idCompetition).orElseThrow(() -> new EntityNotFoundException("Competition not found"));
@@ -68,5 +64,5 @@ public class VoteServiceImp implements VoteService {
         v.setCompetition(competition);
         v.setUser(user);
         return voteRepository.save(v);
-    }
+    }*/
 }
