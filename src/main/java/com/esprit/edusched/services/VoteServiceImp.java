@@ -2,7 +2,6 @@ package com.esprit.edusched.services;
 
 import com.esprit.edusched.entities.Competition;
 import com.esprit.edusched.entities.Team;
-import com.esprit.edusched.entities.User;
 import com.esprit.edusched.entities.Vote;
 import com.esprit.edusched.repositories.CompetitionRepository;
 import com.esprit.edusched.repositories.TeamRepository;

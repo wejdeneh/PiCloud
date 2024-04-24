@@ -3,8 +3,6 @@ package com.esprit.edusched.services;
 import com.esprit.edusched.entities.Bloc;
 import com.esprit.edusched.repositories.BlocRepository;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
