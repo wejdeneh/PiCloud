@@ -2,6 +2,8 @@ package com.esprit.edusched.controllers;
 
 import com.esprit.edusched.entities.Class;
 import com.esprit.edusched.services.ClassService;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,11 +12,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequiredArgsConstructor
 @CrossOrigin
 @RequestMapping(value = "/api/classes")
+@Tag(name="Class")
 public class ClassController {
     @Autowired
-    private ClassService classService;
+    private  ClassService classService;
 
     // Create
     @PostMapping("/add")

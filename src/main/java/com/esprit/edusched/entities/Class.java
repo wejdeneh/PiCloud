@@ -20,5 +20,6 @@ public class Class  implements Serializable {
     @ManyToOne
     @JoinColumn(name = "idB")
     private Bloc bloc;
+    private boolean liberated;
 
 }
