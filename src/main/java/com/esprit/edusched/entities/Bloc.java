@@ -23,6 +23,7 @@ public class Bloc implements Serializable {
     @Column(name = "idB")
     private Long idB;
     private String name;
+    private int capacity;
     @JsonIgnore
 
     @OneToMany(mappedBy="bloc", cascade = CascadeType.ALL)
