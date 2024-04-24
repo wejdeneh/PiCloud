@@ -19,7 +19,7 @@ public class Vote implements Serializable {
     @ManyToOne
     @JsonIgnore
     private Competition competition;
-    /*@ManyToOne
-    private User user ;*/
+    @ManyToOne
+    private User user ;
 
 }

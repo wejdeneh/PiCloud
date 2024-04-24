@@ -1,8 +1,10 @@
 package com.esprit.edusched.controllers;
 import com.esprit.edusched.entities.ReservationT;
 import com.esprit.edusched.entities.Terrain;
+import com.esprit.edusched.entities.User;
 import com.esprit.edusched.services.IReservationTService;
 import com.esprit.edusched.services.ITerrainService;
+import com.esprit.edusched.services.IUserService;
 import com.esprit.edusched.services.ReservationTService;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
@@ -21,7 +23,7 @@ public class ReservationTController {
     @Autowired
     IReservationTService iReservationTService;
     ITerrainService iTerrainService;
-    //IUserService iUserService;
+    IUserService iUserService;
     ReservationTService reservationTService;
 
 
@@ -95,7 +97,7 @@ public class ReservationTController {
         List<ReservationT> availableReservations = reservationTService.getAvailableReservations();
         return ResponseEntity.ok(availableReservations);
     }
-   /*
+
     @PutMapping("/terrains/reserve/{idResT}")
     public ResponseEntity<String> reserve(@PathVariable int idResT, @RequestBody User user){
         boolean success = reservationTService.reserver(idResT,user);
@@ -104,14 +106,14 @@ public class ReservationTController {
         }else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Reservation not found");
         }
-    }*/
-    /*
+    }
+
     @GetMapping("/reservationTs/{idUser}")
-    public ResponseEntity<List<ReservationT>> getReservationsByIdUser(@PathVariable int idUser){
+    public ResponseEntity<List<ReservationT>> getReservationsByIdUser(@PathVariable long idUser){
         User user = iUserService.findUserById(idUser);
         List<ReservationT> reservations = reservationTService.getReservationByUser(user);
         return ResponseEntity.ok(reservations);
-    }*/
+    }
     @GetMapping("/reservationTs/terrain/{idTerrain}")
     public ResponseEntity<List<ReservationT>> getReservationsByIdTerrain(@PathVariable int idTerrain){
         Terrain terrain = iTerrainService.findTerrainById(idTerrain);

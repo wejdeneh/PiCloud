@@ -40,9 +40,9 @@ public class VoteController {
         Vote vote = voteService.fingById(id);
         voteService.deleteVote(vote);
     }
-    /*@PostMapping("/createVote/{teamId}/{competitionId}/{userId}")
+    @PostMapping("/createVote/{teamId}/{competitionId}/{userId}")
     public Vote createVote(@PathVariable("teamId") long teamId, @PathVariable("competitionId") long competitionId, @PathVariable("userId") long userId, @RequestBody Vote vote) {
         return voteService.createVote(vote, teamId, competitionId, userId);
-    }*/
+    }
 
 }

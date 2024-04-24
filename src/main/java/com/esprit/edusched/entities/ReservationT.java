@@ -26,10 +26,10 @@ public class ReservationT {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_terrain",nullable = true)
     private Terrain terrain;
-    /*
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_User",nullable = true)
-    private User user;*/
+    private User user;
 
 
 }
