@@ -1,6 +1,7 @@
 package com.esprit.edusched.controllers;
 
 import com.esprit.edusched.entities.ReservationC;
+import com.esprit.edusched.repositories.ReservationCRepository;
 import com.esprit.edusched.services.ReservationCService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,12 +13,13 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/api/reservationcs")
+
 public class ReservationCController {
-    @Autowired
-    private ReservationCService reservationCService;
+    private final ReservationCService reservationCService;
+    private final ReservationCRepository reservationCRepository;
+
 
     @PostMapping("/add")
     public ResponseEntity<ReservationC> addReservationC(@RequestBody ReservationC reservationC) {
@@ -59,4 +61,11 @@ public class ReservationCController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PostMapping("/affect/{idC}")
+  public  void addReservationAffectClass(@RequestBody ReservationC reservationC , @PathVariable Long idC  ){
+         reservationCService.addReservationAffectClass(reservationC , idC);
+
+    }
+
+
 }

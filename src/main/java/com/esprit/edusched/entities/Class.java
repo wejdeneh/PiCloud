@@ -1,5 +1,6 @@
 package com.esprit.edusched.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -20,6 +21,6 @@ public class Class  implements Serializable {
     @ManyToOne
     @JoinColumn(name = "idB")
     private Bloc bloc;
-    private boolean liberated;
+    private boolean liberated = true;
 
 }
