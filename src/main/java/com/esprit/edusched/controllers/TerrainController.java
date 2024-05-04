@@ -36,6 +36,16 @@ public class TerrainController {
         }else{
             ExistingT.setDescription(ExistingT.getDescription());
         }
+        if(t.getLongtitude()!=0){
+            ExistingT.setLongtitude(t.getLongtitude());
+        }else{
+            ExistingT.setLongtitude(ExistingT.getLongtitude());
+        }
+        if(t.getLatitude()!=0){
+            ExistingT.setLatitude(t.getLatitude());
+        }else{
+            ExistingT.setLatitude(ExistingT.getLatitude());
+        }
         return iTerrainService.updateTerrain(idTerrain,ExistingT);
     }
     /*@PutMapping("/updateTerrain")

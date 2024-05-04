@@ -22,6 +22,8 @@ public class Terrain {
     @OneToMany(mappedBy = "terrain")
     @JsonIgnore
     private List<ReservationT> reservationTS;
+    private double latitude;
+    private double longtitude;
 
 
 }
