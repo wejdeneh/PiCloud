@@ -37,7 +37,7 @@ public class WebSecurityConfiguration {
                         "/reservations/available", "/terrains/reserve/{idResT}","/reservationTs/{idUser}"
                         ,"/reservationTs/terrain/{idTerrain}", "/addTerrain","/updateTerrain/{idTerrain}"
                         ,"/deleteTerrain/{idTerrain}","/findAllTerrains",
-                        "/findTerrainById/{idTerrain}").permitAll()
+                        "/findTerrainById/{idTerrain}","/terrain/search").permitAll()
                 .and()
                 . authorizeHttpRequests()
                 .requestMatchers("/signup/register/verify").permitAll().and()
