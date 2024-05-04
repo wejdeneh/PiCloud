@@ -32,7 +32,7 @@ public class WebSecurityConfiguration {
         return security.cors()
                 .and().csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/signup","/login/*","/login").permitAll()
+                .requestMatchers("/signup","/login/*","/login","addCompetition","getAllCompetition","getCompetitionId/**","addTeam","addVote","createVote/**","deleteTeam/**","deleteVote/","getAllTeams","getAllVotes","getTeamById/**","getVoteById/**","updateTeam","updateVote","affecter-equipe/**").permitAll()
                 .and()
                 . authorizeHttpRequests()
                 .requestMatchers("/signup/register/verify").permitAll().and()
