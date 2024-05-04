@@ -1,6 +1,5 @@
 package com.esprit.edusched.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,7 +10,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 @Builder
@@ -26,9 +24,6 @@ public class User implements Serializable, UserDetails {
     private String name;
     private String email;
     private String password;
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<ReservationT> reservationTS;
 
     @Lob
     @Column(length = 10000)
@@ -39,6 +34,8 @@ public class User implements Serializable, UserDetails {
     @OneToMany(mappedBy = "user")
     private Set<SecureToken> tokens;
 
+    @OneToOne(mappedBy = "user")
+    private Role role;
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
