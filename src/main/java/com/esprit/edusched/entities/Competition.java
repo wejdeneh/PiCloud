@@ -19,6 +19,8 @@ public class Competition implements Serializable {
     private long competitionId ;
     private String nom ;
     private LocalDateTime dateDebut ;
+    private String qrcode;
+    private Categorie categorie;
 
     @ManyToMany
     private List<Team> teams;
