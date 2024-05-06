@@ -32,7 +32,12 @@ public class WebSecurityConfiguration {
         return security.cors()
                 .and().csrf().disable()
                 .authorizeHttpRequests()
+<<<<<<< HEAD
                 .requestMatchers("/signup","/login/*","/login","/addReservationT","/updateReservationT/{idResT}","/deleteReservationT/{idResT}","/findAllReservationT","/findReservationTById/{idResT}","/reservations/available","/terrains/reserve/{idResT}","/reservationTs/{idUser}","/reservationTs/terrain/{idTerrain}","/addTerrain","/updateTerrain/{idTerrain}","/deleteTerrain/{idTerrain}","/findAllTerrains","/findTerrainById/{idTerrain}","**").permitAll()
+=======
+                .requestMatchers("/signup","/login/*","/login","addCompetition","getAllCompetition","getCompetitionId/**","addTeam","addVote","createVote/**","deleteTeam/**","deleteVote/","getAllTeams","getAllVotes","getTeamById/**","getVoteById/**","updateTeam","updateVote","affecter-equipe/**").permitAll()
+                .requestMatchers("/addReservationT","/updateReservationT/{idResT}","/deleteReservationT/{idResT}","/findAllReservationT","/findReservationTById/{idResT}","/reservations/available","/terrains/reserve/{idResT}","/reservationTs/{idUser}","/reservationTs/terrain/{idTerrain}","/addTerrain","/updateTerrain/{idTerrain}","/deleteTerrain/{idTerrain}","/findAllTerrains","/findTerrainById/{idTerrain}").permitAll()
+>>>>>>> origin/main
                 .and()
                 . authorizeHttpRequests()
                 .requestMatchers("/signup/register/verify").permitAll().and()

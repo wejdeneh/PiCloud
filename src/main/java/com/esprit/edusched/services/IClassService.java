@@ -19,4 +19,9 @@ public interface IClassService {
 
     // Method to delete a class by its ID
     String deleteClass(Long id);
+<<<<<<< HEAD
+=======
+
+    Class addClasandaffectbloc(Long idBloc, Class clas);
+>>>>>>> origin/main
 }

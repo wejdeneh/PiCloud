@@ -1,5 +1,6 @@
 package com.esprit.edusched.services;
 
+<<<<<<< HEAD
 import com.esprit.edusched.entities.ReservationC;
 import com.esprit.edusched.repositories.ReservationCRepository;
 import lombok.AllArgsConstructor;
@@ -12,12 +13,45 @@ import java.util.List;
 
 public class ReservationCService {
     private ReservationCRepository reservationCRepository;
+=======
+import com.esprit.edusched.entities.Class;
+import com.esprit.edusched.entities.ReservationC;
+import com.esprit.edusched.repositories.ClassRepository;
+import com.esprit.edusched.repositories.ReservationCRepository;
+import jakarta.transaction.Transactional;
+import lombok.AllArgsConstructor;
+
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+
+import java.time.ZoneId;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+@Service
+@AllArgsConstructor
+@Slf4j
+public class ReservationCService {
+    private final ReservationCRepository reservationCRepository;
+    private final ClassRepository classRep;
+    private final SmsService smsService;
+    private final String phoneNumber = "+21628275170";
+>>>>>>> origin/main
 
     public ReservationC addReservationC(ReservationC reservationC) {
         return reservationCRepository.save(reservationC);
     }
 
     public List<ReservationC> getAllReservationCs() {
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/main
         return reservationCRepository.findAll();
     }
 
@@ -36,6 +70,21 @@ public class ReservationCService {
         }
         return null;
     }
+<<<<<<< HEAD
+=======
+    public ReservationC updateReservationState(Long id, String newState) {
+        ReservationC reservationC = reservationCRepository.findById(id).orElse(null);
+        if (reservationC != null) {
+            reservationC.setState(newState);
+            String smsMessage = "Your reservation at " + reservationC.getStartd() + " is "+ newState;
+//            smsService.sendSms(String.valueOf(user.getNumTel()), smsMessage, newState);
+           smsService.sendSms(phoneNumber, smsMessage);
+            return reservationCRepository.save(reservationC);
+
+        }
+        return null; // Or throw an exception if the reservation with the given id is not found
+    }
+>>>>>>> origin/main
 
     public String deleteReservationC(Long id) {
         if (reservationCRepository.existsById(id)) {
@@ -44,4 +93,43 @@ public class ReservationCService {
         }
         return "ReservationC not found";
     }
+<<<<<<< HEAD
 }
+=======
+    @Transactional
+    public void addReservationAffectClass(ReservationC res, Long idC) {
+        Class clas = classRep.findById(idC).orElse(null);
+        if (clas == null) {
+            log.error("Class not found with ID: " + idC);
+            return;
+        }
+
+        log.info("Attempting to add a new reservation: StartDate={}, FinalDate={}, StartHour={}, FinalHour={}",
+                res.getStartd(), res.getFinald(), res.getStartHour(), res.getFinalHour());
+
+        // Use the custom repository method to find reservations by date and hour
+        List<ReservationC> existingReservations = reservationCRepository.findReservationsByDateAndHour(
+                res.getStartd(), res.getStartHour());
+
+        boolean hasOverlap = existingReservations.stream().anyMatch(existingRes ->
+                !(res.getFinald().isBefore(existingRes.getStartd()) || res.getStartd().isAfter(existingRes.getFinald())) &&
+                        !(res.getFinalHour().isBefore(existingRes.getStartHour()) || res.getStartHour().isAfter(existingRes.getFinalHour()))
+        );
+
+        if (!hasOverlap) {
+            res.setClas(clas);
+            reservationCRepository.saveAndFlush(res); // Note the flush here
+            log.info("Reservation added successfully for class ID: " + idC);
+            //String smsMessage = "Your reservation has been submited.";
+            //            smsService.sendSms(String.valueOf(user.getNumTel()), smsMessage);
+           // smsService.sendSms(phoneNumber, smsMessage);
+
+        } else {
+            log.error("Failed to add reservation due to a conflict with existing reservations for class ID: " + idC);
+        }
+    }
+
+
+}
+
+>>>>>>> origin/main
