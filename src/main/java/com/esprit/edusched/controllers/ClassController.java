@@ -1,6 +1,10 @@
+
 package com.esprit.edusched.controllers;
 
+import com.esprit.edusched.entities.Bloc;
 import com.esprit.edusched.entities.Class;
+import com.esprit.edusched.repositories.BlocRepository;
+import com.esprit.edusched.repositories.ClassRepository;
 import com.esprit.edusched.services.ClassService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -13,12 +17,13 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/api/classes")
 @Tag(name="Class")
 public class ClassController {
-    @Autowired
-    private  ClassService classService;
+    private final ClassService classService;
+    private final BlocRepository blocRepository;
+    private final ClassRepository classRepository;
 
     // Create
     @PostMapping("/add")
@@ -46,13 +51,19 @@ public class ClassController {
 
     // Update
     @PutMapping("/update/{id}")
-    public ResponseEntity<Class> updateClass(@PathVariable Long id, @RequestBody Class updatedClass) {
-        Class clazz = classService.updateClass(id, updatedClass);
-        if (clazz != null) {
-            return ResponseEntity.ok(clazz);
-        } else {
+    public ResponseEntity<Class> updateClass(@PathVariable Long id, @RequestBody Class classDto) {
+        Class existingClass = classRepository.findById(id).orElse(null);
+        if (existingClass == null) {
             return ResponseEntity.notFound().build();
         }
+
+        Bloc bloc = blocRepository.findById(classDto.getBloc().getIdB()).orElse(null);
+        existingClass.setBloc(bloc);
+        existingClass.setNum(classDto.getNum());
+        existingClass.setLiberated(classDto.isLiberated());
+
+        classRepository.save(existingClass);
+        return ResponseEntity.ok(existingClass);
     }
 
     // Delete
@@ -65,4 +76,9 @@ public class ClassController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PostMapping("/addclaasAffectBloc/{idBloc}")
+    public Class addClasandaffectbloc(@PathVariable Long idBloc,@RequestBody Class clas) {
+        return classService.addClasandaffectbloc(idBloc, clas);
+    }
 }
+

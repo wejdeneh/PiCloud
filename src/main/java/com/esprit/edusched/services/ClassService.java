@@ -1,6 +1,8 @@
 package com.esprit.edusched.services;
 
+import com.esprit.edusched.entities.Bloc;
 import com.esprit.edusched.entities.Class;
+import com.esprit.edusched.repositories.BlocRepository;
 import com.esprit.edusched.repositories.ClassRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,9 +13,10 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 
-public class ClassService {
-    @Autowired
-    private ClassRepository classRepository;
+public class ClassService implements IClassService{
+
+    private final ClassRepository classRepository;
+    private final BlocRepository blocRepository     ;
 
     public Class addClass(Class clazz) {
         return classRepository.save(clazz);
@@ -38,6 +41,8 @@ public class ClassService {
         return null;
     }
 
+
+
     public String deleteClass(Long id) {
         if (classRepository.existsById(id)) {
             classRepository.deleteById(id);
@@ -45,4 +50,14 @@ public class ClassService {
         }
         return "Class not found";
     }
+
+    @Override
+    public Class addClasandaffectbloc(Long idBloc, Class clas) {
+        Bloc bloc = blocRepository.findById(idBloc).orElse(null);
+clas.setBloc(bloc);
+classRepository.save(clas);
+
+return clas;
+    }
+
 }

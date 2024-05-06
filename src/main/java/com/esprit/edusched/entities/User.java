@@ -47,6 +47,18 @@ public class User implements Serializable, UserDetails {
 
     @OneToOne(mappedBy = "user")
     private Role role;
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Rating> ratings;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Review> reviews;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<React> reacts;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -82,18 +94,6 @@ public class User implements Serializable, UserDetails {
 
 
 
-    @OneToMany(mappedBy = "user")
-    private List<Reservation> reservations;
-    @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Rating> ratings;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Review> reviews;
-    @JsonIgnore
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<React> reacts;
 
 
   /*  public int getIdUser() {

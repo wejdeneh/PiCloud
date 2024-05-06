@@ -1,6 +1,8 @@
+
 package com.esprit.edusched.controllers;
 
 import com.esprit.edusched.entities.ReservationC;
+import com.esprit.edusched.repositories.ReservationCRepository;
 import com.esprit.edusched.services.ReservationCService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,15 +11,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequiredArgsConstructor
-
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/api/reservationcs")
+
 public class ReservationCController {
-    @Autowired
-    private ReservationCService reservationCService;
+    private final ReservationCService reservationCService;
+    private final ReservationCRepository reservationCRepository;
+
 
     @PostMapping("/add")
     public ResponseEntity<ReservationC> addReservationC(@RequestBody ReservationC reservationC) {
@@ -49,6 +53,22 @@ public class ReservationCController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PutMapping("/updatestatus/{id}")
+    public ResponseEntity<ReservationC> updateReservationStatus(@PathVariable("id") Long id, @RequestBody Map<String, String> requestBody) {
+        String newState = requestBody.get("state");
+        if (newState != null && (newState.equals("confirmed") || newState.equals("unconfirmed"))) {
+            ReservationC updatedReservationC = reservationCService.updateReservationState(id, newState);
+            if (updatedReservationC != null) {
+                return ResponseEntity.ok(updatedReservationC);
+            } else {
+                return ResponseEntity.notFound().build();
+            }
+        } else {
+            return ResponseEntity.badRequest().build();
+        }
+    }
+
+
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteReservationC(@PathVariable("id") Long id) {
@@ -59,4 +79,12 @@ public class ReservationCController {
             return ResponseEntity.notFound().build();
         }
     }
+    @PostMapping("/affect/{idC}")
+  public  void addReservationAffectClass(@RequestBody ReservationC reservationC , @PathVariable Long idC  ){
+         reservationCService.addReservationAffectClass(reservationC , idC);
+
+    }
+
+
+
 }
