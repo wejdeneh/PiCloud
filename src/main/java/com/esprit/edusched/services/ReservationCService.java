@@ -96,9 +96,10 @@ public class ReservationCService {
             res.setClas(clas);
             reservationCRepository.saveAndFlush(res); // Note the flush here
             log.info("Reservation added successfully for class ID: " + idC);
-//String smsMessage = "Your reservation has been submited.";
-//            smsService.sendSms(String.valueOf(user.getNumTel()), smsMessage);
+            //String smsMessage = "Your reservation has been submited.";
+            //            smsService.sendSms(String.valueOf(user.getNumTel()), smsMessage);
            // smsService.sendSms(phoneNumber, smsMessage);
+
         } else {
             log.error("Failed to add reservation due to a conflict with existing reservations for class ID: " + idC);
         }
@@ -106,3 +107,4 @@ public class ReservationCService {
 
 
 }
+
