@@ -27,7 +27,7 @@ public class ReservationT {
     @JoinColumn(name="id_terrain",nullable = true)
     private Terrain terrain;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="id_User",nullable = true)
     private User user;
 

@@ -1,6 +1,7 @@
 package com.esprit.edusched.services;
 import com.esprit.edusched.entities.ReservationT;
 
+import java.util.Date;
 import java.util.List;
 
 public interface IReservationTService {
@@ -10,6 +11,7 @@ public interface IReservationTService {
     void deleteReservationT(int idResT);
     List<ReservationT> findAllReservationsT();
     ReservationT findReservationTById(int idResT);
+
 
 
 }

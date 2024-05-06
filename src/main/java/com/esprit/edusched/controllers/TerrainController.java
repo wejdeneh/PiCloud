@@ -2,7 +2,7 @@ package com.esprit.edusched.controllers;
 import com.esprit.edusched.entities.Terrain;
 import com.esprit.edusched.services.IReservationTService;
 import com.esprit.edusched.services.ITerrainService;
-import com.esprit.edusched.services.SearchServiceTerrain;
+//import com.esprit.edusched.services.SearchServiceTerrain;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,8 @@ public class TerrainController {
     ITerrainService iTerrainService;
     @Autowired
     IReservationTService iReservationTService;
-    @Autowired
-    private SearchServiceTerrain searchServiceTerrain;
+   /* @Autowired
+    private SearchServiceTerrain searchServiceTerrain;*/
     @PostMapping("/addTerrain")
     public Terrain addTerrain(@RequestBody Terrain t){
         return iTerrainService.addTerrain(t);
@@ -68,11 +68,12 @@ public class TerrainController {
     public Terrain findTerrainById(@PathVariable("idTerrain") int idTerrain){
         return iTerrainService.findTerrainById(idTerrain);
     }
+/*
 
     @GetMapping("/terrain/search")
     public List<Terrain> searchTerrainByName(@RequestParam("name") String name){
         return searchServiceTerrain.findTerrainByName(name);
-    }
+    }*/
 
     
 

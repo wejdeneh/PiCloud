@@ -5,6 +5,7 @@ import com.esprit.edusched.dto.UserListRequest;
 import com.esprit.edusched.dto.UserResponseImg;
 import com.esprit.edusched.entities.User;
 import com.esprit.edusched.repositories.UserRepository;
+import com.esprit.edusched.services.IUserService;
 import com.esprit.edusched.services.ProfilServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,12 +25,14 @@ public class TestController {
     private final ProfilServiceImpl profilService;
     @Autowired
     private final UserRepository userRepository;
+    @Autowired
+    private final IUserService iUserService;
 
 
-    public TestController(ProfilServiceImpl profilService, UserRepository userRepository) {
+    public TestController(ProfilServiceImpl profilService, UserRepository userRepository, IUserService iUserService) {
         this.profilService = profilService;
         this.userRepository = userRepository;
-
+        this.iUserService = iUserService;
     }
 
     @GetMapping("/list")
@@ -62,6 +65,8 @@ public class TestController {
         User user=userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found with email"+ email));
         return ResponseEntity.ok(new UserResponseImg(user.getName(),user.getEmail(),user.getImage()));
     }
+
+
 //    @GetMapping("/currentUserRegister")
 //    public ResponseEntity<UserResponseRegister> getUserByEmailRegister(@RequestParam String email) {
 //        User user=userRepository.findByEmail(email).orElseThrow(() -> new UsernameNotFoundException("User not found with email"+ email));

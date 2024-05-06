@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -43,6 +44,7 @@ public class ReservationTService implements IReservationTService{
         return reservationTRepository.findById(idResT).get();
     }
     public boolean reserver(int idResT,User user){
+        System.out.println(user);
         ReservationT reservationT = reservationTRepository.findById(idResT).get();
         reservationT.setUser(user);
         reservationT.setEtat(Etat.RESERVED);
@@ -60,7 +62,6 @@ public class ReservationTService implements IReservationTService{
     public List<ReservationT> getReservationByTerrain(Terrain terrain){
         return reservationTRepository.findByTerrain(terrain);
     }
-
 
 
 }

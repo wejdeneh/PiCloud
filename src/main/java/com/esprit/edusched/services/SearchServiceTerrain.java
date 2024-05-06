@@ -1,6 +1,7 @@
-package com.esprit.edusched.services;
+/*package com.esprit.edusched.services;
 
 import com.esprit.edusched.entities.Terrain;
+import jakarta.transaction.Transactional;
 import org.hibernate.search.jpa.FullTextEntityManager;
 import org.hibernate.search.jpa.Search;
 import org.hibernate.search.query.dsl.BooleanJunction;
@@ -14,12 +15,15 @@ import org.springframework.util.StringUtils;
 
 
 import javax.persistence.EntityManager;
-import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 public class SearchServiceTerrain implements ApplicationListener<ContextRefreshedEvent> {
 
+    @Autowired
+    private SearchServiceTerrain searchServiceTerrain;
+    @Autowired
+    private EntityManager entityManager;
     @Transactional
     public void fullIndexation(){
         final FullTextEntityManager fullTextEntityManager = Search.getFullTextEntityManager(entityManager);
@@ -30,10 +34,7 @@ public class SearchServiceTerrain implements ApplicationListener<ContextRefreshe
             Thread.currentThread().interrupt();
         }
     }
-    @Autowired
-    private SearchServiceTerrain searchServiceTerrain;
-    @Autowired
-    private EntityManager entityManager;
+
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
         searchServiceTerrain.fullIndexation();
@@ -70,3 +71,4 @@ public class SearchServiceTerrain implements ApplicationListener<ContextRefreshe
 
 
 }
+*/

@@ -34,10 +34,10 @@ public class WebSecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/signup","/login/*","/login","/addReservationT","/updateReservationT/{idResT}"
                         ,"/deleteReservationT/{idResT}","/findAllReservationT","/findReservationTById/{idResT}",
-                        "/reservations/available", "/terrains/reserve/{idResT}","/reservationTs/{idUser}"
+                        "/reservations/available","/reservationTs/{idUser}"
                         ,"/reservationTs/terrain/{idTerrain}", "/addTerrain","/updateTerrain/{idTerrain}"
                         ,"/deleteTerrain/{idTerrain}","/findAllTerrains",
-                        "/findTerrainById/{idTerrain}","/terrain/search").permitAll()
+                        "/findTerrainById/{idTerrain}","/reservationT/between/{idResT}","/terrains/reserve/{idUser}/{idResT}","/findUserById/{idUser}").permitAll()
                 .and()
                 . authorizeHttpRequests()
                 .requestMatchers("/signup/register/verify").permitAll().and()
