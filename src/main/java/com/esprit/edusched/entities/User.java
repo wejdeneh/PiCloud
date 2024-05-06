@@ -1,16 +1,22 @@
 package com.esprit.edusched.entities;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import com.fasterxml.jackson.annotation.JsonIgnore;
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -20,13 +26,17 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 import lombok.Builder;
+<<<<<<< HEAD
 >>>>>>> origin/main
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.util.Collection;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.List;
 import java.util.Set;
 
@@ -36,6 +46,12 @@ import java.util.Set;
 
 
 >>>>>>> origin/main
+=======
+
+import java.util.Set;
+
+
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 @Builder
 @Entity
 @AllArgsConstructor
@@ -49,11 +65,14 @@ public class User implements Serializable, UserDetails {
     private String email;
     private String password;
 <<<<<<< HEAD
+<<<<<<< HEAD
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<ReservationT> reservationTS;
 =======
 >>>>>>> origin/main
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 
     @Lob
     @Column(length = 10000)
@@ -65,7 +84,10 @@ public class User implements Serializable, UserDetails {
     private Set<SecureToken> tokens;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
     @OneToOne(mappedBy = "user")
     private Role role;
     @OneToMany(mappedBy = "user")
@@ -81,12 +103,16 @@ public class User implements Serializable, UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<React> reacts;
 
+<<<<<<< HEAD
 >>>>>>> origin/main
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     @Override
     public String getPassword() {
@@ -95,6 +121,9 @@ public class User implements Serializable, UserDetails {
 =======
 
 >>>>>>> origin/main
+=======
+
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 
     @Override
     public String getUsername() {
@@ -121,7 +150,10 @@ public class User implements Serializable, UserDetails {
         return enabled;//switch it to true or we will not be able to connect our users
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 
 
 
@@ -138,5 +170,8 @@ public class User implements Serializable, UserDetails {
 
 
 
+<<<<<<< HEAD
 >>>>>>> origin/main
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 }

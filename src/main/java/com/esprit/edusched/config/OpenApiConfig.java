@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 //package com.esprit.edusched.config;
 //
 //import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -50,6 +51,8 @@
 //public class OpenApiConfig {
 //}
 =======
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 package com.esprit.edusched.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
@@ -100,4 +103,7 @@ import io.swagger.v3.oas.annotations.servers.Server;
 )
 public class OpenApiConfig {
 }
+<<<<<<< HEAD
 >>>>>>> origin/main
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda

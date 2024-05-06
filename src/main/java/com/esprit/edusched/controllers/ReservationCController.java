@@ -2,6 +2,7 @@
 package com.esprit.edusched.controllers;
 
 import com.esprit.edusched.entities.ReservationC;
+<<<<<<< HEAD
 =======
 
 package com.esprit.edusched.controllers;
@@ -9,6 +10,9 @@ package com.esprit.edusched.controllers;
 import com.esprit.edusched.entities.ReservationC;
 import com.esprit.edusched.repositories.ReservationCRepository;
 >>>>>>> origin/main
+=======
+import com.esprit.edusched.repositories.ReservationCRepository;
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 import com.esprit.edusched.services.ReservationCService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,13 +22,18 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+import java.util.Map;
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 
 @RestController
 @RequiredArgsConstructor
-
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/api/reservationcs")
+
 public class ReservationCController {
+<<<<<<< HEAD
     @Autowired
     private ReservationCService reservationCService;
 =======
@@ -40,6 +49,11 @@ public class ReservationCController {
     private final ReservationCRepository reservationCRepository;
 
 >>>>>>> origin/main
+=======
+    private final ReservationCService reservationCService;
+    private final ReservationCRepository reservationCRepository;
+
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 
     @PostMapping("/add")
     public ResponseEntity<ReservationC> addReservationC(@RequestBody ReservationC reservationC) {
@@ -72,7 +86,10 @@ public class ReservationCController {
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
     @PutMapping("/updatestatus/{id}")
     public ResponseEntity<ReservationC> updateReservationStatus(@PathVariable("id") Long id, @RequestBody Map<String, String> requestBody) {
         String newState = requestBody.get("state");
@@ -89,7 +106,10 @@ public class ReservationCController {
     }
 
 
+<<<<<<< HEAD
 >>>>>>> origin/main
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<String> deleteReservationC(@PathVariable("id") Long id) {
@@ -101,7 +121,10 @@ public class ReservationCController {
         }
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
     @PostMapping("/affect/{idC}")
   public  void addReservationAffectClass(@RequestBody ReservationC reservationC , @PathVariable Long idC  ){
          reservationCService.addReservationAffectClass(reservationC , idC);
@@ -110,5 +133,8 @@ public class ReservationCController {
 
 
 
+<<<<<<< HEAD
 >>>>>>> origin/main
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 }

@@ -33,11 +33,16 @@ public class WebSecurityConfiguration {
                 .and().csrf().disable()
                 .authorizeHttpRequests()
 <<<<<<< HEAD
+<<<<<<< HEAD
                 .requestMatchers("/signup","/login/*","/login","/addReservationT","/updateReservationT/{idResT}","/deleteReservationT/{idResT}","/findAllReservationT","/findReservationTById/{idResT}","/reservations/available","/terrains/reserve/{idResT}","/reservationTs/{idUser}","/reservationTs/terrain/{idTerrain}","/addTerrain","/updateTerrain/{idTerrain}","/deleteTerrain/{idTerrain}","/findAllTerrains","/findTerrainById/{idTerrain}","**").permitAll()
 =======
                 .requestMatchers("/signup","/login/*","/login","addCompetition","getAllCompetition","getCompetitionId/**","addTeam","addVote","createVote/**","deleteTeam/**","deleteVote/","getAllTeams","getAllVotes","getTeamById/**","getVoteById/**","updateTeam","updateVote","affecter-equipe/**").permitAll()
                 .requestMatchers("/addReservationT","/updateReservationT/{idResT}","/deleteReservationT/{idResT}","/findAllReservationT","/findReservationTById/{idResT}","/reservations/available","/terrains/reserve/{idResT}","/reservationTs/{idUser}","/reservationTs/terrain/{idTerrain}","/addTerrain","/updateTerrain/{idTerrain}","/deleteTerrain/{idTerrain}","/findAllTerrains","/findTerrainById/{idTerrain}").permitAll()
 >>>>>>> origin/main
+=======
+                .requestMatchers("/signup","/login/*","/login","addCompetition","getAllCompetition","getCompetitionId/**","addTeam","addVote","createVote/**","deleteTeam/**","deleteVote/","getAllTeams","getAllVotes","getTeamById/**","getVoteById/**","updateTeam","updateVote","affecter-equipe/**").permitAll()
+                .requestMatchers("/addReservationT","/updateReservationT/{idResT}","/deleteReservationT/{idResT}","/findAllReservationT","/findReservationTById/{idResT}","/reservations/available","/terrains/reserve/{idResT}","/reservationTs/{idUser}","/reservationTs/terrain/{idTerrain}","/addTerrain","/updateTerrain/{idTerrain}","/deleteTerrain/{idTerrain}","/findAllTerrains","/findTerrainById/{idTerrain}").permitAll()
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
                 .and()
                 . authorizeHttpRequests()
                 .requestMatchers("/signup/register/verify").permitAll().and()
@@ -62,5 +67,3 @@ public class WebSecurityConfiguration {
     }
 
     }
-
-

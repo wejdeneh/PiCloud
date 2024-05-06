@@ -18,6 +18,7 @@ public class CompetitionServiceImp implements CompetitionService{
     @Autowired
     private TeamRepository teamRepository;
 <<<<<<< HEAD
+<<<<<<< HEAD
     @Override
     public Competition addCompetition(Competition competition) {
 
@@ -31,6 +32,16 @@ public class CompetitionServiceImp implements CompetitionService{
         String qrCodeUrl = generateQRCode(qrData);
         competition.setQrcode(qrCodeUrl);
 >>>>>>> origin/main
+=======
+
+
+
+    @Override
+    public Competition addCompetition(Competition competition) {
+        String qrData = "Competition Details:" + competition.getCompetitionId() + " ,Nom:" + competition.getNom() + " ,Date :" + competition.getDateDebut() + " ,Catégorie :" + competition.getCategorie();
+        String qrCodeUrl = generateQRCode(qrData);
+        competition.setQrcode(qrCodeUrl);
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
         return competitionRepository.save(competition);
     }
 
@@ -76,11 +87,17 @@ public class CompetitionServiceImp implements CompetitionService{
         competitionRepository.save(competition);
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
     private String generateQRCode(String data) {
         return "http://api.qrserver.com/v1/create-qr-code/?data=" + data + "&size=75x75";
     }
 >>>>>>> origin/main
+=======
+    private String generateQRCode(String data) {
+        return "http://api.qrserver.com/v1/create-qr-code/?data=" + data + "&size=75x75";
+    }
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 
 
 }
