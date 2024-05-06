@@ -1,8 +1,18 @@
 package com.esprit.edusched.services;
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+import com.esprit.edusched.entities.Class;
+=======
 import com.esprit.edusched.entities.Bloc;
 import com.esprit.edusched.entities.Class;
 import com.esprit.edusched.repositories.BlocRepository;
+>>>>>>> origin/main
+=======
+import com.esprit.edusched.entities.Bloc;
+import com.esprit.edusched.entities.Class;
+import com.esprit.edusched.repositories.BlocRepository;
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 import com.esprit.edusched.repositories.ClassRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +23,22 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+public class ClassService {
+    @Autowired
+    private ClassRepository classRepository;
+=======
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 public class ClassService implements IClassService{
 
     private final ClassRepository classRepository;
     private final BlocRepository blocRepository     ;
+<<<<<<< HEAD
+>>>>>>> origin/main
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 
     public Class addClass(Class clazz) {
         return classRepository.save(clazz);
@@ -41,8 +63,16 @@ public class ClassService implements IClassService{
         return null;
     }
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 
 
+>>>>>>> origin/main
+=======
+
+
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
     public String deleteClass(Long id) {
         if (classRepository.existsById(id)) {
             classRepository.deleteById(id);
@@ -50,6 +80,11 @@ public class ClassService implements IClassService{
         }
         return "Class not found";
     }
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
 
     @Override
     public Class addClasandaffectbloc(Long idBloc, Class clas) {
@@ -59,5 +94,9 @@ classRepository.save(clas);
 
 return clas;
     }
+<<<<<<< HEAD
 
+>>>>>>> origin/main
 }
+=======
+>>>>>>> b4a3d431c1b7f8a20def6d08b42cd6225d502eda
