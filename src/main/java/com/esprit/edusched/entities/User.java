@@ -5,12 +5,23 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.List;
+
+import lombok.Builder;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
 import java.util.Collection;
+
 import java.util.Set;
+
 
 @Builder
 @Entity
@@ -36,15 +47,13 @@ public class User implements Serializable, UserDetails {
 
     @OneToOne(mappedBy = "user")
     private Role role;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
     }
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
+
 
     @Override
     public String getUsername() {
@@ -70,4 +79,32 @@ public class User implements Serializable, UserDetails {
     public boolean isEnabled() {
         return enabled;//switch it to true or we will not be able to connect our users
     }
+
+
+
+    @OneToMany(mappedBy = "user")
+    private List<Reservation> reservations;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Rating> ratings;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Review> reviews;
+    @JsonIgnore
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<React> reacts;
+
+
+  /*  public int getIdUser() {
+        return 0;
+    }*/
+
+
+    //@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+   // private List<Reservation> reservations;
+
+
+
+
 }
