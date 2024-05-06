@@ -6,10 +6,10 @@ import java.util.List;
 
 public interface IBlocService {
     List<Bloc> getAllBlocs();
-    Bloc getBlocById(int id);
+    Bloc getBlocById(Long id);
     Bloc addBloc(Bloc bloc);
     void updateBloc(int id, Bloc bloc);
-    void deleteBloc(int id);
+    String deleteBloc(Long id);
     Bloc updateBloc(Long id, Bloc updatedBloc);
 
 }
