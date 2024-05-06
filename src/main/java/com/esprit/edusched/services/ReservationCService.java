@@ -4,9 +4,6 @@ import com.esprit.edusched.entities.Class;
 import com.esprit.edusched.entities.ReservationC;
 import com.esprit.edusched.repositories.ClassRepository;
 import com.esprit.edusched.repositories.ReservationCRepository;
-import com.twilio.Twilio;
-import com.twilio.exception.TwilioException;
-import com.twilio.rest.chat.v1.service.channel.Message;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 
