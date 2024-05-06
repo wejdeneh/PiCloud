@@ -26,10 +26,7 @@ public class BlocService implements IBlocService{
 
     }
 
-    @Override
-    public void deleteBloc(int id) {
 
-    }
 
     public List<Bloc> getAllBlocs() {
         return blocRepository.findAll();
@@ -49,7 +46,7 @@ public class BlocService implements IBlocService{
         }
         return null;
     }
-
+    @Override
     public String deleteBloc(Long id) {
         if (blocRepository.existsById(id)) {
             blocRepository.deleteById(id);
