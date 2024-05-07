@@ -2,6 +2,8 @@ package com.esprit.edusched.controllers;
 import com.esprit.edusched.entities.ReservationT;
 import com.esprit.edusched.entities.Terrain;
 import com.esprit.edusched.entities.User;
+import com.esprit.edusched.enums.Etat;
+import com.esprit.edusched.repositories.ReservationTRepository;
 import com.esprit.edusched.services.IReservationTService;
 import com.esprit.edusched.services.ITerrainService;
 import com.esprit.edusched.services.IUserService;
@@ -31,6 +33,9 @@ public class ReservationTController {
     IUserService iUserService;
     @Autowired
     ReservationTService reservationTService;
+
+    @Autowired
+    ReservationTRepository reservationTRepository;
 
 
     @PostMapping("/addReservationT")
@@ -159,6 +164,12 @@ public class ReservationTController {
             currentTime += interval;
         }
         return datesBetween;
+    }
+    @PostMapping("/addReservation/{idUser}")
+    public ReservationT addReservation(@RequestBody ReservationT resT,@PathVariable("idUser") int idUser){
+        User user = iUserService.findUserById(idUser);
+        //System.out.println(user);
+        return iReservationTService.reserve(resT,user);
     }
 
 

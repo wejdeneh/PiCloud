@@ -57,6 +57,12 @@ public class ReservationTService implements IReservationTService{
         reservationTRepository.save(reservationT);
         return true;
     }
+@Override
+    public ReservationT reserve(ReservationT t,User user){
+        t.setUser(user);
+        return reservationTRepository.save(t);
+    }
+
     public List<ReservationT> getAvailableReservations(){
         List<ReservationT> allReservations = reservationTRepository.findAll();
         List<ReservationT> availableReservations = allReservations.stream().filter(reservationT -> reservationT.getEtat()==Etat.AVAILABLE).collect(Collectors.toList());

@@ -40,17 +40,17 @@ public class TerrainController {
         }else{
             ExistingT.setDescription(ExistingT.getDescription());
         }
-        /*
-        if(t.getLongtitude()!=0){
-            ExistingT.setLongtitude(t.getLongtitude());
+
+        if(t.getLongitude()!=0){
+            ExistingT.setLongitude(t.getLongitude());
         }else{
-            ExistingT.setLongtitude(ExistingT.getLongtitude());
+            ExistingT.setLongitude(ExistingT.getLongitude());
         }
         if(t.getLatitude()!=0){
             ExistingT.setLatitude(t.getLatitude());
         }else{
             ExistingT.setLatitude(ExistingT.getLatitude());
-        }*/
+        }
         return iTerrainService.updateTerrain(idTerrain,ExistingT);
     }
     /*@PutMapping("/updateTerrain")
