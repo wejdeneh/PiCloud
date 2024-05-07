@@ -10,6 +10,8 @@ public interface IReservationTService {
 
     void deleteReservationT(int idResT);
     List<ReservationT> findAllReservationsT();
+    List<ReservationT> findAll();
+
     ReservationT findReservationTById(int idResT);
 
 

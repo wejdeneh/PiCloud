@@ -45,4 +45,35 @@ public class RatingController {
     public long countRating(){
         return ratingRepository.count();
     }
+
+    @GetMapping("/rating/above")
+    public long getAbove() {
+        long total = ratingRepository.count();
+        long count = 0;
+        List<Rating> allRatings = ratingRepository.findAll();
+        for (Rating rating : allRatings) {
+            if (rating.getValue() >= 3) {
+                count = count + 1;
+                //return count;
+            }
+        }
+        return count;
+
+
+    }
+    @GetMapping("/rating/below")
+    public long getBelow() {
+        long total = ratingRepository.count();
+        long count = 0;
+        List<Rating> allRatings = ratingRepository.findAll();
+        for (Rating rating : allRatings) {
+            if (rating.getValue() < 3) {
+                count = count + 1;
+                //return count;
+            }
+        }
+        return count;
+
+
+    }
 }

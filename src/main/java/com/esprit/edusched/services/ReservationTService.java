@@ -36,6 +36,12 @@ public class ReservationTService implements IReservationTService{
 
     @Override
     public List<ReservationT> findAllReservationsT() {
+        List<ReservationT> reservations = reservationTRepository.findAll();
+        reservations.forEach(reservation -> reservation.setUser(null)); // This line sets the user to null for each reservation
+        return reservations;
+        //return reservationTRepository.findAll();
+    }
+    public List<ReservationT> findAll() {
         return reservationTRepository.findAll();
     }
 
@@ -54,6 +60,7 @@ public class ReservationTService implements IReservationTService{
     public List<ReservationT> getAvailableReservations(){
         List<ReservationT> allReservations = reservationTRepository.findAll();
         List<ReservationT> availableReservations = allReservations.stream().filter(reservationT -> reservationT.getEtat()==Etat.AVAILABLE).collect(Collectors.toList());
+        availableReservations.forEach(reservation -> reservation.setUser(null));
         return availableReservations;
     }
     public List<ReservationT> getReservationByUser(User user){

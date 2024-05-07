@@ -1,6 +1,7 @@
 package com.esprit.edusched.entities;
 
 import com.esprit.edusched.enums.Etat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,7 +28,7 @@ public class ReservationT {
     @JoinColumn(name="id_terrain",nullable = true)
     private Terrain terrain;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_User",nullable = true)
     private User user;
 

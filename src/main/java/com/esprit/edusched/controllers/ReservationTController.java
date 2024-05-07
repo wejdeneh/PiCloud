@@ -88,6 +88,10 @@ public class ReservationTController {
     public List<ReservationT> findAllReservationT(){
         return iReservationTService.findAllReservationsT();
     }
+    @GetMapping("/findAll")
+    public List<ReservationT> findAll(){
+        return iReservationTService.findAll();
+    }
     @GetMapping("/findReservationTById/{idResT}")
     public ReservationT findReservationTById(@PathVariable("idResT") int idresT){
         return iReservationTService.findReservationTById(idresT);
@@ -121,6 +125,7 @@ public class ReservationTController {
         User user = iUserService.findUserById(idUser);
         System.out.println(user);
         List<ReservationT> reservations = reservationTService.getReservationByUser(user);
+        reservations.forEach(reservation -> reservation.setUser(null));
         return ResponseEntity.ok(reservations);
     }
 

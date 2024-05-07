@@ -40,6 +40,7 @@ public class TerrainController {
         }else{
             ExistingT.setDescription(ExistingT.getDescription());
         }
+        /*
         if(t.getLongtitude()!=0){
             ExistingT.setLongtitude(t.getLongtitude());
         }else{
@@ -49,7 +50,7 @@ public class TerrainController {
             ExistingT.setLatitude(t.getLatitude());
         }else{
             ExistingT.setLatitude(ExistingT.getLatitude());
-        }
+        }*/
         return iTerrainService.updateTerrain(idTerrain,ExistingT);
     }
     /*@PutMapping("/updateTerrain")

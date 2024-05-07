@@ -39,9 +39,9 @@ public class User implements Serializable, UserDetails {
     @OneToOne(mappedBy = "user")
     private Role role;
 
-    @OneToMany(mappedBy = "user")
+    /*@OneToMany(mappedBy = "user")
     @JsonIgnore
-    private List<ReservationT> reservationTS;
+    private List<ReservationT> reservationTS;*/
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

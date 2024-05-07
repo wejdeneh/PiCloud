@@ -37,11 +37,11 @@ public class WebSecurityConfiguration {
                         "/reservations/available","/reservationTs/{idUser}"
                         ,"/reservationTs/terrain/{idTerrain}", "/addTerrain","/updateTerrain/{idTerrain}"
                         ,"/deleteTerrain/{idTerrain}","/findAllTerrains",
-                        "/findTerrainById/{idTerrain}","/reservationT/between/{idResT}","/terrains/reserve/{idUser}/{idResT}","/findUserById/{idUser}","/addRating/{idUser}","/findAllRatings","/findRatingById/{id}","/rating/count").permitAll()
+                        "/findTerrainById/{idTerrain}","/reservationT/between/{idResT}","/terrains/reserve/{idUser}/{idResT}","/findUserById/{idUser}","/addRating/{idUser}","/findAllRatings","/findRatingById/{id}","/rating/count","/rating/above","/rating/below","/findAll").permitAll()
                 .and()
                 . authorizeHttpRequests()
-                .requestMatchers("/signup/register/verify").permitAll().and()
-                .authorizeHttpRequests().requestMatchers("/api/**")
+                .requestMatchers("/signup/register/verify/").permitAll().and()
+                .authorizeHttpRequests().requestMatchers("/api/**","/findAllRatings")
                 .authenticated()
                 .and()
                 .sessionManagement()

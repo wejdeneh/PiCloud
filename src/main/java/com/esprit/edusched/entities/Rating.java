@@ -1,5 +1,6 @@
 package com.esprit.edusched.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -16,6 +17,7 @@ public class Rating {
     private int id;
     private int value;
     @ManyToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name="id_User",nullable = true)
     private User user;
 }
