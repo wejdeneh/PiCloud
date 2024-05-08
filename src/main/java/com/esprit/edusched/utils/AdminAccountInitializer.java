@@ -2,7 +2,7 @@ package com.esprit.edusched.utils;
 
 import com.esprit.edusched.entities.Role;
 import com.esprit.edusched.entities.User;
-import com.esprit.edusched.entities.enumRole;
+import com.esprit.edusched.enums.enumRole;
 import com.esprit.edusched.repositories.RoleRepository;
 import com.esprit.edusched.repositories.UserRepository;
 import jakarta.annotation.Resource;

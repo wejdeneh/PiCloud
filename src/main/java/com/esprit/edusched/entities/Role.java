@@ -1,6 +1,7 @@
 package com.esprit.edusched.entities;
 
 
+import com.esprit.edusched.enums.enumRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

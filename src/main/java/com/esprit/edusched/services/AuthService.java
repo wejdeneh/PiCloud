@@ -11,4 +11,5 @@ public interface AuthService {
     void sendVerificationEmail(User user) throws MessagingException, UnsupportedEncodingException;
 
     public boolean verifyUser(String token);
+
 }

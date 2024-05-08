@@ -2,6 +2,9 @@ package com.esprit.edusched.controllers;
 
 import com.esprit.edusched.dto.LoginRequest;
 import com.esprit.edusched.dto.LoginResponse;
+import com.esprit.edusched.dto.PasswordResetRequest;
+import com.esprit.edusched.services.PasswordService;
+import com.esprit.edusched.services.AuthService;
 import com.esprit.edusched.services.jwt.UserServiceImpl;
 import com.esprit.edusched.utils.JwtUtil;
 import jakarta.mail.MessagingException;
@@ -21,11 +24,14 @@ import org.springframework.web.bind.annotation.*;
 public class LoginController {
     private final AuthenticationManager authenticationManager;
     private final UserServiceImpl userService;
+    private final PasswordService passwordService;
     private final JwtUtil jwtUtil;
     @Autowired
-    public LoginController(AuthenticationManager authenticationManager, UserServiceImpl userService, JwtUtil jwtUtil) {
+    public LoginController(AuthenticationManager authenticationManager, UserServiceImpl userService, PasswordService passwordService, JwtUtil jwtUtil) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
+        this.passwordService = passwordService;
+
         this.jwtUtil = jwtUtil;
     }
     @PostMapping
@@ -47,9 +53,20 @@ public class LoginController {
         return ResponseEntity.ok(new LoginResponse(jwt,userDetail.getUsername()));
     }
 
-    @PostMapping ("/forget")
-    public ResponseEntity<?> forgot_pass(@RequestBody String email) throws MessagingException {
-        userService.forgotPassword(email);
-        return ResponseEntity.ok("accepted");
+    @PostMapping("/forget")
+    public ResponseEntity<String> forgotPassword(@RequestParam String email) throws MessagingException {
+        userService.initiatePasswordReset(email);
+        return ResponseEntity.ok("Password reset instructions sent to your email.");
     }
+
+    @PostMapping("/set-password")
+    public ResponseEntity<String> setPassword(@RequestBody PasswordResetRequest request) {
+        String email = request.getEmail();
+        String newPassword = request.getNewPassword();
+        String oldPassword = request.getOldPassword();
+        passwordService.setPassword(email, newPassword,oldPassword);
+        return ResponseEntity.ok("Password reset successfully.");
+    }
+
+
 }
