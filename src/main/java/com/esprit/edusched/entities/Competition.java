@@ -2,6 +2,7 @@ package com.esprit.edusched.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.util.List;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class Competition implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,6 +26,12 @@ public class Competition implements Serializable {
 
     @ManyToMany
     private List<Team> teams;
+//
+    @ManyToMany
+    private List<Terrain> terrains ;
+
+    @OneToMany(mappedBy = "competition")
+    private List<ReservationT> reservationTS ;
 
 
 }

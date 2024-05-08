@@ -38,17 +38,6 @@ public class TerrainService implements ITerrainService{
     public Terrain findTerrainById(int idTerrain) {
         return terrainRepo.findById(idTerrain).get();
     }
-    public Date findFirstDate(ReservationT reservationT){
-        return reservationT.getDate_debut();
-    }
-    /*public Date findLastDate(ReservationT reservationT){
-        return  reservationT.getDate_fin();
-
-    }
-    public void findBetween(Date from, Date to){
-
-    }*/
-
 
 
 }
