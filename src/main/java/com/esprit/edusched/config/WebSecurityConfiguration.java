@@ -32,7 +32,10 @@ public class WebSecurityConfiguration {
         return security.cors()
                 .and().csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/signup","/login/*","/login","/addReservationT","/updateReservationT/{idResT}"
+                .requestMatchers("/signup","/login/*","/login","login/set-password").permitAll()
+                .and()
+                . authorizeHttpRequests()
+                .requestMatchers("/signup/register/verify","/addReservationT","/updateReservationT/{idResT}"
                         ,"/deleteReservationT/{idResT}","/findAllReservationT","/findReservationTById/{idResT}",
                         "/reservations/available","/reservationTs/{idUser}"
                         ,"/reservationTs/terrain/{idTerrain}", "/addTerrain","/updateTerrain/{idTerrain}"
@@ -41,12 +44,8 @@ public class WebSecurityConfiguration {
                         ,"/findUserById/{idUser}","/addRating/{idUser}","/findAllRatings","/findRatingById/{id}","/rating/count"
                         ,"/rating/above","/rating/below","/findAll","/addReservation/{idUser}","addCompetition","getAllCompetition"
                         ,"getCompetitionId/**","addTeam","addVote","createVote/**","deleteTeam/**","deleteVote/","getAllTeams","getAllVotes"
-                        ,"getTeamById/**","getVoteById/**","updateTeam","updateVote","affecter-equipe/**").permitAll()
-
-                .and()
-                . authorizeHttpRequests()
-                .requestMatchers("/signup/register/verify/").permitAll().and()
-                .authorizeHttpRequests().requestMatchers("/api/**","/findAllRatings")
+                        ,"getTeamById/**","getVoteById/**","updateTeam","updateVote","affecter-equipe/**").permitAll().and()
+                .authorizeHttpRequests().requestMatchers("/api")
                 .authenticated()
                 .and()
                 .sessionManagement()

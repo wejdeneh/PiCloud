@@ -1,6 +1,8 @@
 package com.esprit.edusched.entities;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+
+import com.esprit.edusched.enums.EnumClasse;
+import com.esprit.edusched.enums.EnumSpecialite;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -21,7 +23,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.io.Serializable;
 import java.util.Collection;
 
-import java.util.List;
+import java.util.Date;
 import java.util.Set;
 import java.util.Set;
 import java.util.Set;
@@ -48,6 +50,13 @@ public class User implements Serializable, UserDetails {
     private byte[] image;
 
     private boolean enabled;
+    private Date creationDate;
+    private EnumClasse enumClasse;
+    private EnumSpecialite enumSpecialite;
+    private String number;
+    private String nationality;
+    private boolean banned;
+    private Date banExpirationDate;
 
     @OneToMany(mappedBy = "user")
     private Set<SecureToken> tokens;
@@ -97,6 +106,9 @@ public class User implements Serializable, UserDetails {
     @Override
     public boolean isCredentialsNonExpired() {
         return true;//switch it to true or we will not be able to connect our users
+    }
+    public boolean isBanExpired() {
+        return this.banExpirationDate != null && this.banExpirationDate.before(new Date());
     }
 
     @Override
