@@ -98,4 +98,9 @@ public class TestController {
         return userRepository.countUsersByRegistrationMonth();
     }
 
+    @GetMapping("/currentUserId")
+    public Long GetUserByEmail(@RequestParam String email){
+        return userRepository.findByEmail(email).get().getId();
+    }
+
 }
