@@ -1,10 +1,13 @@
 package com.esprit.edusched.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Data
@@ -16,13 +19,16 @@ public class ReservationC implements Serializable {
     @Column(name = "idR")
     private Long idR;
     @Temporal(TemporalType.DATE)
-    private Date startd;
+    private LocalDate startd;
+    private LocalTime startHour;
+    private LocalTime finalHour;
     @Temporal(TemporalType.DATE)
-    private Date finald;
+
+    private LocalDate finald;
+
     private String state;
     @ManyToOne
     @JoinColumn(name = "idC")
-    @JsonIgnoreProperties({"reservationCS"})
     private Class clas;
 
 

@@ -1,9 +1,7 @@
 package com.esprit.edusched.controllers;
-
 import com.esprit.edusched.entities.Bloc;
 import com.esprit.edusched.services.IBlocService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,16 +9,15 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-
-@CrossOrigin
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(value = "/api/blocs")
 public class BlocController {
-    private IBlocService blocService;
+    private final IBlocService blocService;
 
     // Create
     @PostMapping("/add")
-    public ResponseEntity<Bloc> addBloc(@RequestBody Bloc bloc) {
-        return new ResponseEntity<>(blocService.addBloc(bloc), HttpStatus.CREATED);
+    public Bloc addBloc(@RequestBody Bloc bloc) {
+        return blocService.addBloc(bloc);
     }
 
     // Read all blocs
@@ -62,4 +59,6 @@ public class BlocController {
             return ResponseEntity.notFound().build();
         }
     }
+
 }
+

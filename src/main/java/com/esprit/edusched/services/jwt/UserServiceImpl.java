@@ -1,8 +1,8 @@
 package com.esprit.edusched.services.jwt;
 
 import com.esprit.edusched.entities.User;
-import com.esprit.edusched.repositories.UserRepository;
 import com.esprit.edusched.services.EmailService;
+import com.esprit.edusched.repositories.UserRepository;
 import jakarta.mail.MessagingException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
