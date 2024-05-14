@@ -19,7 +19,7 @@ import java.util.Objects;
 @Service
 public class AuthServiceImpl implements AuthService {
     @Resource
-    private  UserRepository userRepository;
+    private UserRepository userRepository;
     @Resource
     private  PasswordEncoder passwordEncoder;
     @Resource
@@ -97,6 +97,7 @@ public class AuthServiceImpl implements AuthService {
         secureTokenService.removeToken(secureToken);
         return true;
     }
+
 
 
 

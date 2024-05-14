@@ -21,7 +21,7 @@ public class BlocService implements IBlocService{
     }
 
     @Override
-    public Bloc getBlocById(long id) {
+    public Bloc getBlocById(Long id) {
         return blocRepository.findById(id).orElse(null);    }
 
     @Override
@@ -30,14 +30,14 @@ public class BlocService implements IBlocService{
     }
 
     @Override
-    public String deleteBloc(long id) {
+    public String deleteBloc(Long id) {
         if (blocRepository.existsById(id)) {
             blocRepository.deleteById(id);
             return "Bloc deleted";
         }
         return "Bloc not found";
-
     }
+
 
     @Override
     public Bloc updateBloc(Long id, Bloc updatedBloc) {
@@ -64,9 +64,15 @@ public class BlocService implements IBlocService{
             return blocRepository.save(bloc);
         }
         return null;
+<<<<<<< HEAD
     }*/
 
     /*@Override
+=======
+    }
+    @Override
+>>>>>> wejdene-creates-crud-v1.3
+
     public String deleteBloc(Long id) {
         if (blocRepository.existsById(id)) {
             blocRepository.deleteById(id);

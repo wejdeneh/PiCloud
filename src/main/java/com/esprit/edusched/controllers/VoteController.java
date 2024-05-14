@@ -1,6 +1,7 @@
 package com.esprit.edusched.controllers;
 
 
+import com.esprit.edusched.dto.DtoRequestVote;
 import com.esprit.edusched.entities.Vote;
 import com.esprit.edusched.services.VoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,9 +41,13 @@ public class VoteController {
         Vote vote = voteService.fingById(id);
         voteService.deleteVote(vote);
     }
-    @PostMapping("/createVote/{teamId}/{competitionId}/{userId}")
-    public Vote createVote(@PathVariable("teamId") long teamId, @PathVariable("competitionId") long competitionId, @PathVariable("userId") long userId, @RequestBody Vote vote) {
-        return voteService.createVote(vote, teamId, competitionId, userId);
+//    @PostMapping("/createVote/{teamId}/{competitionId}/{userId}")
+//    public Vote createVote(@PathVariable("teamId") long teamId, @PathVariable("competitionId") long competitionId, @PathVariable("userId") long userId, @RequestBody Vote vote) {
+//        return voteService.createVote(vote, teamId, competitionId, userId);
+//    }
+    @PostMapping("/createVote   ")
+    public Vote createVote(@RequestBody DtoRequestVote dtoRequestVote) {
+        return voteService.createVote(dtoRequestVote.getVote(), dtoRequestVote.getTeamId(), dtoRequestVote.getCompetitionId(), dtoRequestVote.getUserId());
     }
 
 }

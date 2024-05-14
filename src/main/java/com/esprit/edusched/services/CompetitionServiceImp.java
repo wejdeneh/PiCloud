@@ -36,7 +36,6 @@ public class CompetitionServiceImp implements CompetitionService {
     @Autowired
     private ReservationTRepository reservationTRepository;
 
-
     @Override
     public Competition addCompetition(Competition competition) {
 //        String qrData = "Competition Details:" + competition.getCompetitionId() + " ,Nom:" + competition.getNom() + " ,Date :" + competition.getDateDebut() + " ,Catégorie :" + competition.getCategorie();
@@ -145,6 +144,7 @@ public class CompetitionServiceImp implements CompetitionService {
             throw new Exception(e);
         }
     }
+
 }
 
 

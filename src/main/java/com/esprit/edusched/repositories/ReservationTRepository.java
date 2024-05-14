@@ -7,9 +7,12 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.time.LocalDateTime;
+import org.springframework.stereotype.Repository;
+
 import java.util.Date;
 import java.util.List;
 
+@Repository
 public interface ReservationTRepository extends JpaRepository<ReservationT,Integer> {
     //ReservationT findByUser(User user);
     List<ReservationT> findByUser(User user);

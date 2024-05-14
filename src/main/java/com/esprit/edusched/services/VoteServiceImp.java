@@ -62,6 +62,7 @@ public class VoteServiceImp implements VoteService {
 
     @Override
     public Vote createVote(Vote v, long idTeam, long idCompetition, long idUser) {
+
         System.out.println("helloooooooooooooooooooooooooooooo");
         Team team = teamRepository.findById(idTeam).orElseThrow(() -> new EntityNotFoundException("Team not found"));
         Competition competition = competitionRepository.findById(idCompetition).orElseThrow(() -> new EntityNotFoundException("Competition not found"));

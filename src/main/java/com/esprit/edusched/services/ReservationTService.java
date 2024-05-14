@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,6 +36,12 @@ public class ReservationTService implements IReservationTService{
 
     @Override
     public List<ReservationT> findAllReservationsT() {
+        List<ReservationT> reservations = reservationTRepository.findAll();
+        reservations.forEach(reservation -> reservation.setUser(null)); // This line sets the user to null for each reservation
+        return reservations;
+        //return reservationTRepository.findAll();
+    }
+    public List<ReservationT> findAll() {
         return reservationTRepository.findAll();
     }
 
@@ -43,15 +50,23 @@ public class ReservationTService implements IReservationTService{
         return reservationTRepository.findById(idResT).get();
     }
     public boolean reserver(int idResT,User user){
+        System.out.println(user);
         ReservationT reservationT = reservationTRepository.findById(idResT).get();
         reservationT.setUser(user);
         reservationT.setEtat(Etat.RESERVED);
         reservationTRepository.save(reservationT);
         return true;
     }
+@Override
+    public ReservationT reserve(ReservationT t,User user){
+        t.setUser(user);
+        return reservationTRepository.save(t);
+    }
+
     public List<ReservationT> getAvailableReservations(){
         List<ReservationT> allReservations = reservationTRepository.findAll();
         List<ReservationT> availableReservations = allReservations.stream().filter(reservationT -> reservationT.getEtat()==Etat.AVAILABLE).collect(Collectors.toList());
+        availableReservations.forEach(reservation -> reservation.setUser(null));
         return availableReservations;
     }
     public List<ReservationT> getReservationByUser(User user){
@@ -60,7 +75,6 @@ public class ReservationTService implements IReservationTService{
     public List<ReservationT> getReservationByTerrain(Terrain terrain){
         return reservationTRepository.findByTerrain(terrain);
     }
-
 
 
 }

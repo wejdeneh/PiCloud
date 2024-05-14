@@ -2,6 +2,7 @@ package com.esprit.edusched.controllers;
 import com.esprit.edusched.entities.Terrain;
 import com.esprit.edusched.services.IReservationTService;
 import com.esprit.edusched.services.ITerrainService;
+//import com.esprit.edusched.services.SearchServiceTerrain;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,10 @@ import java.util.List;
 public class TerrainController {
     @Autowired
     ITerrainService iTerrainService;
+    @Autowired
     IReservationTService iReservationTService;
+   /* @Autowired
+    private SearchServiceTerrain searchServiceTerrain;*/
     @PostMapping("/addTerrain")
     public Terrain addTerrain(@RequestBody Terrain t){
         return iTerrainService.addTerrain(t);
@@ -36,6 +40,17 @@ public class TerrainController {
         }else{
             ExistingT.setDescription(ExistingT.getDescription());
         }
+
+        if(t.getLongitude()!=0){
+            ExistingT.setLongitude(t.getLongitude());
+        }else{
+            ExistingT.setLongitude(ExistingT.getLongitude());
+        }
+        if(t.getLatitude()!=0){
+            ExistingT.setLatitude(t.getLatitude());
+        }else{
+            ExistingT.setLatitude(ExistingT.getLatitude());
+        }
         return iTerrainService.updateTerrain(idTerrain,ExistingT);
     }
     /*@PutMapping("/updateTerrain")
@@ -54,6 +69,13 @@ public class TerrainController {
     public Terrain findTerrainById(@PathVariable("idTerrain") int idTerrain){
         return iTerrainService.findTerrainById(idTerrain);
     }
+/*
+
+    @GetMapping("/terrain/search")
+    public List<Terrain> searchTerrainByName(@RequestParam("name") String name){
+        return searchServiceTerrain.findTerrainByName(name);
+    }*/
+
     
 
 
